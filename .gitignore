@@ -1,3 +1,6 @@
 .idea/
 .ipynb_checkpoints/
 log/
+Tensorflow实践样例_MNIST数字识别_改进版/mnist_data/
+Tensorflow实践样例_MNIST数字识别_改进版/model/
+Tensorflow实践样例_MNIST数字识别_改进版/__pycache__/
