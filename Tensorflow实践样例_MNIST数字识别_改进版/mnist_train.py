@@ -56,11 +56,16 @@ def train(mnist):
     with tf.Session() as sess:
         tf.initialize_all_variables().run()
 
+        # 在训练过程中不再测试模型在验证数据上的表现，验证和测试的过程将会有一个独立的的程序来完成。
         for i in range(TRAINING_STEPS):
             xs, ys = mnist.train.next_batch(BATCH_SIZE)
             _, loss_value, step = sess.run([train_op, loss, global_step], feed_dict={x: xs, y_: ys})
+            # 每1000轮保存一次模型
             if i % 1000 == 0:
+                # 输出当前的训练情况。这里只输出了模型在当前训练batch上的损失函数大小。通过损失函数的大小可以大概了解训练的情况。
                 print("After %d training step(s), loss on training batch is %g " % (step, loss_value))
+                # 保存当前的模型。注意这里给出了global_step参数，这样可以让每个被保存的模型的文件名末尾加上训练的轮数，
+                # 比如“model.ckpt-1000”表示训练1000轮之后得到的模型。
                 saver.save(
                     sess, os.path.join(MODEL_SAVE_PATH, MODEL_NAME),
                     global_step=global_step
