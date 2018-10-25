@@ -7,3 +7,6 @@
 2. 第二个是mnist_train.py, 定义了神经网络的训练过程.
 3. 第三个是mnist_eval.py, 定义了测试过程.
 
+使用方法：
+
+同时运行mnist_train.py和mnist_eval.py，mnist_eval.py会输出训练过程中的准确度。
